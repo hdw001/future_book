@@ -14,6 +14,13 @@
 Route::get('/', function () {
     return view('admin.login');
 });
+
 Route::get('/home', function () {
     return view('admin.pages.home');
 });
+
+//==================================================================
+
+
+Route::post('/login', 'LoginController@login');
+

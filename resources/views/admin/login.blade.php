@@ -7,12 +7,9 @@
     <meta name="author" content="">
 
     <link rel="shortcut icon" href="img/favicon_1.ico"/>
-
     <title>未来图书管理系统</title>
-
     <!-- Google-Fonts -->
     <link href='Css/03a7988f4261455a8379efb98c6852cb.css' rel='stylesheet'/>
-
 
     <!-- Bootstrap core CSS -->
     <link href="{{asset('html5/Css/bootstrap.min.css')}}" rel="stylesheet"/>
@@ -32,15 +29,7 @@
     <!-- Custom styles for this template -->
     <link href="{{asset('html5/Css/style.css')}}" rel="stylesheet"/>
     <link href="{{asset('html5/Css/helper.css')}}" rel="stylesheet"/>
-    <link href="{{asset('html5/Css/style-responsive.css')}} rel="stylesheet" />
-
-
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
-    <!--[if lt IE 9]>
-    <script src="Scripts/html5shiv.js"></script>
-    <script src="Scripts/respond.min.js"></script>
-    <![endif]-->
+    <link href="{{asset('html5/Css/style-responsive.css')}}" />
 
 </head>
 
@@ -53,7 +42,7 @@
             <h3 class="text-center m-t-10"> 登录 <strong>未来图书管理系统</strong> </h3>
         </div>
 
-        <form class="form-horizontal m-t-40" action="index.html">
+        <div class="form-horizontal m-t-40" >
 
             <div class="form-group ">
                 <div class="col-xs-12">
@@ -61,17 +50,16 @@
                 </div>
             </div>
             <div class="form-group ">
-
                 <div class="col-xs-12">
                     <input class="form-control" type="password" placeholder="密码">
                 </div>
             </div>
             <div class="form-group text-right">
                 <div class="col-xs-12" style="text-align: center;">
-                    <button class="btn btn-purple w-md" type="submit">登录</button>
+                    <button class="btn btn-purple w-md" id="login">登录</button>
                 </div>
             </div>
-        </form>
+        </div>
 
     </div>
 </div>
@@ -85,11 +73,21 @@
 <script src="Scripts/pace.min.js"></script>
 <script src="Scripts/wow.min.js"></script>
 <script src="Scripts/jquery.nicescroll.js" type="text/javascript"></script>
-
-
 <!--common script for all pages-->
 <script src="Scripts/jquery.app.js"></script>
-
-
 </body>
 </html>
+
+<script>
+    $(function () {
+        $("#login").on('click',function(){
+            $.post('/login',{
+                work_number:'001',
+                password:'123456'
+            },function (data) {
+
+            })
+        })
+
+    })
+</script>
