@@ -344,7 +344,13 @@
 <script src="Scripts/jquery.chat.js"></script>
 <!-- Dashboard -->
 <script src="Scripts/jquery.dashboard.js"></script>
-
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 <!-- Todo -->
 <script src="Scripts/jquery.todo.js"></script>
 
@@ -359,6 +365,7 @@
             time: 1200
         });
     });
+
 </script>
 
 

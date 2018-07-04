@@ -16,7 +16,7 @@ class LoginController extends Controller
         $password = $request->get('password', '');
 
         if (empty($work_number)) {
-            return CommonFunc::_fail('请填写您的工号');
+            return CommonFunc::_fail('请填写您的用户ID');
         }
 
         if (empty($password)) {
