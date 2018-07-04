@@ -1,0 +1,20 @@
+/*page默认样式*/
+.page{height:30px;display:inline-block;border-right:#EBEBEB 1px solid}
+.page a,.page b,.page code,.page input,.page strong{border-left:#EBEBEB 1px solid;border-top:#EBEBEB 1px solid;border-bottom:#EBEBEB 1px solid;border-right:none;text-decoration:none;display:inline-block;padding:0 15px;color:#999;font-size:12px;height:28px;line-height:28px;vertical-align:middle}
+.page .arrow_l{background:url(arrow_left.png) #FFF no-repeat center center}
+.page .arrow_r{background:url(arrow_right.png) #FFF no-repeat center center}
+.page .a_arrow_l{background:url(a_arrow_left.png) #FFF no-repeat center center}
+.page .a_arrow_r{background:url(a_arrow_right.png) #FFF no-repeat center center}
+.page b,.page code,.page strong{background:#EEE;font-weight:100}
+.page code{cursor:pointer;background:#EEE;color:#999}
+.page code:hover{background:#DDD;color:#333}
+.page a{background:#FFF;color:#3597DB;cursor:pointer}
+.page a:hover{background-color:#EEE}
+.page .page_info{font-family:"微软雅黑",Verdana,"\5b8b\4f53",arial;color:#333;background:#fff;border:1px solid #fff;font-size:13px;font-weight:100}
+.page .spacing_a{display:inline-block;margin-right:2px;margin-left:3px}
+.page .data_total{display:none}
+.page .page_total{text-decoration:none}
+.page .goto_page_num{outline:0;width:60px;text-align:center}
+.page .goto_page_num:hover{border-left:#E6E6E6 1px solid;border-top:#E6E6E6 1px solid;border-bottom:#E6E6E6 1px solid}
+.page .no_page{cursor:default;}
+.page .loading{ background:url(page_loading.gif) no-repeat center center; background-size:auto 60%; }

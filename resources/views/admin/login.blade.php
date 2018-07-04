@@ -47,17 +47,22 @@
 
             <div class="form-group ">
                 <div class="col-xs-12">
-                    <input class="form-control" type="text" placeholder="用户名">
+                    <input class="form-control" id="user_id" type="text" placeholder="请输入用户ID">
                 </div>
             </div>
             <div class="form-group ">
                 <div class="col-xs-12">
-                    <input class="form-control" type="password" placeholder="密码">
+                    <input class="form-control" id="user_pass"  type="password" placeholder="密码">
                 </div>
             </div>
             <div class="form-group text-right">
                 <div class="col-xs-12" style="text-align: center;">
                     <button class="btn btn-purple w-md" id="login">登录</button>
+                </div>
+            </div>
+            <div class="form-group" id="error_mag">
+                <div class="col-xs-12 error_mag" style="text-align: center;color:red;">
+
                 </div>
             </div>
         </div>
@@ -69,13 +74,11 @@
 
 
 <!-- js placed at the end of the document so the pages load faster -->
-
-<script src="Scripts/bootstrap.min.js"></script>
-<script src="Scripts/pace.min.js"></script>
-<script src="Scripts/wow.min.js"></script>
-<script src="Scripts/jquery.nicescroll.js" type="text/javascript"></script>
-<!--common script for all pages-->
-<script src="Scripts/jquery.app.js"></script>
+<script src="{{asset('Scripts/jquery.js')}}"></script>
+<script src="{{asset('Scripts/bootstrap.min.js')}}"></script>
+<script src="{{asset('Scripts/pace.min.js')}}"></script>
+<script src="{{asset('Scripts/wow.min.js')}}"></script>
+<script src="{{asset('Scripts/jquery.nicescroll.js')}}" type="text/javascript"></script>
 
 </body>
 </html>
@@ -91,10 +94,19 @@
     $(function () {
         $("#login").on('click',function(){
             $.post('/userlogin',{
-                work_number:'001',
-                password:'123456'
+                work_number:$("#user_id").val(),
+                password:$("#user_pass").val()
             },function (data) {
-//                window.location.href='/home';
+                if(data.code==2000){
+                    var data=data.data;
+                    $("#error_mag").hide();
+                    $("#error_mag").find('.error_mag').html('');
+                    window.location.href='/home';
+                }else{
+                    $("#error_mag").show();
+                    $("#error_mag").find('.error_mag').html(data.msg);
+                }
+
             })
         })
 

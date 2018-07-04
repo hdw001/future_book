@@ -11,15 +11,24 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     //查询用户的方法
-    public function selectUserList()
+    public function selectUserList(Request $request)
     {
         $userAuthId = Auth::id();
         $userAuth = DB::talbe('users')->where('id', $userAuthId)->first();
         if ($userAuth->role_id != 1) {
             return CommonFunc::_fail('您没有操作权限');
         }
-
-        $userLists = DB::table('users')->get()->toArray();
+        $pageSize = $request->get('pageSize', 10);
+        $name = $request->get('name', '');
+        $work_number = $request->get('work_number', '');
+        $userLists = DB::table('users')
+            ->when($name, function ($query) use ($name) {
+            return $query->where('name', 'like', "%".$name."%");
+            })
+            ->when($work_number, function ($query) use ($work_number) {
+                return $query->where('work_number', $work_number);
+            });
+        $userLists=$userLists ->orderBy('updated_at', 'desc')->paginate($pageSize);
 
         return CommonFunc::_success($userLists);
     }
