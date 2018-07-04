@@ -15,15 +15,13 @@
 Route::get('/login', function () {
     return view('admin.login');
 });
+Route::get('/home', function () { return view('admin.pages.home');});
+Route::get('/userlist', function () { return view('admin.pages.userlist');});
 
-Route::get('/home', function () {
-    return view('admin.pages.home');
-});
 
 //==================================================================
 //Route::group(['middleware' => 'checkuserlogin' , 'namespace' => 'Admin'], function () {
 Route::group(['middleware' => 'checkuserlogin'], function () {
-
 
 
 });
