@@ -27,11 +27,15 @@ class LoginController extends Controller
 
         if (is_null($user)) {
             return CommonFunc::_fail('此用户不存在');
-        } else {
-            $this->saveUserAttributeToSession($request, $user);
-            return CommonFunc::_success($data = [], '登录成功');
-
         }
+
+        if ($user->password != $password) {
+            return CommonFunc::_fail('密码不正确');
+        }
+
+        $this->saveUserAttributeToSession($request, $user);
+        return CommonFunc::_success($data = [], '登录成功');
+
 
     }
 

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="shortcut icon" href="img/favicon_1.ico"/>
     <title>未来图书管理系统</title>
@@ -68,26 +69,36 @@
 
 
 <!-- js placed at the end of the document so the pages load faster -->
-<script src="Scripts/jquery.js"></script>
+
 <script src="Scripts/bootstrap.min.js"></script>
 <script src="Scripts/pace.min.js"></script>
 <script src="Scripts/wow.min.js"></script>
 <script src="Scripts/jquery.nicescroll.js" type="text/javascript"></script>
 <!--common script for all pages-->
 <script src="Scripts/jquery.app.js"></script>
+
 </body>
 </html>
-
+<script src="Scripts/jquery.js"></script>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 <script>
     $(function () {
         $("#login").on('click',function(){
-            $.post('/login',{
+            $.post('/userlogin',{
                 work_number:'001',
                 password:'123456'
             },function (data) {
-
+//                window.location.href='/home';
             })
         })
+
+
 
     })
 </script>

@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/', function () {
+
+Route::get('/login', function () {
     return view('admin.login');
 });
 
@@ -20,7 +21,12 @@ Route::get('/home', function () {
 });
 
 //==================================================================
+//Route::group(['middleware' => 'checkuserlogin' , 'namespace' => 'Admin'], function () {
+Route::group(['middleware' => 'checkuserlogin'], function () {
+
+    Route::post('/userlogin', 'LoginController@login');
+
+});
 
 
-Route::post('/login', 'LoginController@login');
 
