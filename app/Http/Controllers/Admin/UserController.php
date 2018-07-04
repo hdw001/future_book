@@ -39,6 +39,8 @@ class UserController extends Controller
         $phone = $request->get('phone', '');
         $work_number = $request->get('work_number', '');
         $role_id = $request->get('role_id', '');
+        $sex = $request->get('sex', '');
+        $age = $request->get('age', '');
 
         if (empty($name)) {
             return CommonFunc::_fail('请填写用户名字');
@@ -72,6 +74,22 @@ class UserController extends Controller
             return CommonFunc::_fail('工号不在给定的范围内');
         }
 
+        if (empty($sex)) {
+            return CommonFunc::_fail('请选择性别');
+        }
+
+        $sexArray = [1, 2];//1男 2女
+        if (!in_array($sex, $sexArray)) {
+            return CommonFunc::_fail('性别不在给定的范围内');
+        }
+
+        if (empty($age)) {
+            return CommonFunc::_fail('请填写用户年龄');
+        }
+        if ($age < 0 || $age > 150) {
+            return CommonFunc::_fail('年龄不能小于0或者大于150岁');
+        }
+
         if (empty($role_id)) {
             return CommonFunc::_fail('请选择角色');
         }
@@ -80,13 +98,6 @@ class UserController extends Controller
             return CommonFunc::_fail('角色不在给定的范围内');
         }
 
-        $name = $request->get('name', '');
-        $email = $request->get('email', '');
-        $password = $request->get('password', '');
-        $phone = $request->get('phone', '');
-        $work_number = $request->get('work_number', '');
-        $role_id = $request->get('role_id', '');
-
         $userDataToDb = [
             'name' => $name,
             'email' => $email,
@@ -94,6 +105,8 @@ class UserController extends Controller
             'phone' => $phone,
             'work_number' => $work_number,
             'role_id' => $role_id,
+            'sex' => $sex,
+            'age' => $age,
         ];
 
         try {
@@ -153,6 +166,8 @@ class UserController extends Controller
         $phone = $request->get('phone', '');
         $work_number = $request->get('work_number', '');
         $role_id = $request->get('role_id', '');
+        $sex = $request->get('sex', '');
+        $age = $request->get('age', '');
 
         if (empty($name)) {
             return CommonFunc::_fail('请填写用户名字');
@@ -186,6 +201,22 @@ class UserController extends Controller
             return CommonFunc::_fail('工号不在给定的范围内');
         }
 
+        if (empty($sex)) {
+            return CommonFunc::_fail('请选择性别');
+        }
+
+        $sexArray = [1, 2];//1男 2女
+        if (!in_array($sex, $sexArray)) {
+            return CommonFunc::_fail('性别不在给定的范围内');
+        }
+
+        if (empty($age)) {
+            return CommonFunc::_fail('请填写用户年龄');
+        }
+        if ($age < 0 || $age > 150) {
+            return CommonFunc::_fail('年龄不能小于0或者大于150岁');
+        }
+
         if (empty($role_id)) {
             return CommonFunc::_fail('请选择角色');
         }
@@ -193,14 +224,6 @@ class UserController extends Controller
         if (!in_array($role_id, $roleArray)) {
             return CommonFunc::_fail('角色不在给定的范围内');
         }
-
-        $name = $request->get('name', '');
-        $email = $request->get('email', '');
-        $password = $request->get('password', '');
-        $phone = $request->get('phone', '');
-        $work_number = $request->get('work_number', '');
-        $role_id = $request->get('role_id', '');
-
         $userDataToDb = [
             'name' => $name,
             'email' => $email,
@@ -208,6 +231,8 @@ class UserController extends Controller
             'phone' => $phone,
             'work_number' => $work_number,
             'role_id' => $role_id,
+            'sex' => $sex,
+            'age' => $age,
         ];
 
         try {
