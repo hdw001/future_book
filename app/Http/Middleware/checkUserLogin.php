@@ -16,7 +16,6 @@ class checkUserLogin
     public function handle($request, Closure $next)
     {
         //判断是否没有登录
-//        if(!$request->session()->has('work_number')) {
         if(!$request->session()->has('work_number')) {
             return redirect("/login");
         }
