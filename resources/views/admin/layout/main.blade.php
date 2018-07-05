@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
     <meta name="author" content="Coderthemes">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="img/favicon_1.ico">
 
     <title>Velonic - Responsive Admin Dashboard Template</title>
@@ -140,7 +140,19 @@
 
 
 <!-- js placed at the end of the document so the pages load faster -->
+
+
+</body>
+</html>
+
 <script src="Scripts/jquery.js"></script>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 <script src="Scripts/bootstrap.min.js"></script>
 <script src="Scripts/modernizr.min.js"></script>
 <script src="Scripts/pace.min.js"></script>
@@ -180,13 +192,7 @@
 <script src="Scripts/jquery.chat.js"></script>
 <!-- Dashboard -->
 <script src="Scripts/jquery.dashboard.js"></script>
-<script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-</script>
+
 <!-- Todo -->
 <script src="Scripts/jquery.todo.js"></script>
 
@@ -204,6 +210,3 @@
 
 </script>
 @yield('jsfile')
-
-</body>
-</html>

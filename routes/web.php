@@ -17,14 +17,21 @@ Route::get('/login', function () {
 });
 Route::get('/home', function () { return view('admin.pages.home');});
 Route::get('/userlist', function () { return view('admin.pages.userlist');});
-
-
+Route::get('/useradd', function () { return view('admin.pages.useradd');});
+Route::get('/useredit', function () { return view('admin.pages.useredit');});
+Route::get('/booklist', function () { return view('admin.pages.booklist');});
+Route::get('/bookadd', function () { return view('admin.pages.bookadd');});
+Route::get('/bookinfo', function () { return view('admin.pages.bookinfo');});
 //==================================================================
 //Route::group(['middleware' => 'checkuserlogin' , 'namespace' => 'Admin'], function () {
 Route::group(['middleware' => 'checkuserlogin'], function () {
-
+    Route::post('/userlist', 'Admin\UserController@selectUserList');
+    Route::post('/useradd', 'Admin\UserController@saveUserInfo');
+    Route::get('/userinfo', 'Admin\UserController@editUser');
+    Route::post('/userupdate', 'Admin\UserController@updateUser');
 
 });
 Route::post('/userlogin', 'LoginController@login');
+
 
 

@@ -13,8 +13,8 @@ class UserController extends Controller
     //查询用户的方法
     public function selectUserList(Request $request)
     {
-        $userAuthId = Auth::id();
-        $userAuth = DB::talbe('users')->where('id', $userAuthId)->first();
+        $work_numberId =   $request->session()->get('work_number');
+        $userAuth = DB::table('users')->where('work_number', $work_numberId)->first();
         if ($userAuth->role_id != 1) {
             return CommonFunc::_fail('您没有操作权限');
         }
@@ -36,12 +36,11 @@ class UserController extends Controller
     //用户添加方法
     public function saveUserInfo(Request $request)
     {
-        $userAuthId = Auth::id();
-        $userAuth = DB::talbe('users')->where('id', $userAuthId)->first();
+        $work_numberId =   $request->session()->get('work_number');
+        $userAuth = DB::table('users')->where('work_number', $work_numberId)->first();
         if ($userAuth->role_id != 1) {
             return CommonFunc::_fail('您没有操作权限');
         }
-
         $name = $request->get('name', '');
         $email = $request->get('email', '');
         $password = $request->get('password', '');
@@ -131,12 +130,11 @@ class UserController extends Controller
     //编辑用户
     public function editUser(Request $request)
     {
-        $userAuthId = Auth::id();
-        $userAuth = DB::talbe('users')->where('id', $userAuthId)->first();
+        $work_numberId =   $request->session()->get('work_number');
+        $userAuth = DB::table('users')->where('work_number', $work_numberId)->first();
         if ($userAuth->role_id != 1) {
             return CommonFunc::_fail('您没有操作权限');
         }
-
         $userId = $request->get('user_id', '');
         if (empty($userId)) {
             return CommonFunc::_fail('缺失用户的ID参数');
@@ -154,8 +152,8 @@ class UserController extends Controller
     //更新用户信息
     public function updateUser(Request $request)
     {
-        $userAuthId = Auth::id();
-        $userAuth = DB::talbe('users')->where('id', $userAuthId)->first();
+        $work_numberId =   $request->session()->get('work_number');
+        $userAuth = DB::table('users')->where('work_number', $work_numberId)->first();
         if ($userAuth->role_id != 1) {
             return CommonFunc::_fail('您没有操作权限');
         }
@@ -257,8 +255,8 @@ class UserController extends Controller
     //删除用户
     public function deleteUser(Request $request)
     {
-        $userAuthId = Auth::id();
-        $userAuth = DB::talbe('users')->where('id', $userAuthId)->first();
+        $work_numberId =   $request->session()->get('work_number');
+        $userAuth = DB::table('users')->where('work_number', $work_numberId)->first();
         if ($userAuth->role_id != 1) {
             return CommonFunc::_fail('您没有操作权限');
         }

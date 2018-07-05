@@ -1,7 +1,6 @@
 @extends('admin.layout.main')
 @section('cssfile')
     <link rel="stylesheet" href="{{asset('css/userlist.css')}}">
-    <link href="{{asset('js/page/skin/default/style.css')}}"  rel="stylesheet" />
 @endsection
 @section('content')
     <div class="panel panel-default">
@@ -93,5 +92,5 @@
     </div>
 @endsection
 @section('jsfile')
-    <script src="{{asset('js/userlist/useradd.js')}}"></script>
+    <script src="{{asset('js/userlist/useredit.js')}}"></script>
 @endsection
