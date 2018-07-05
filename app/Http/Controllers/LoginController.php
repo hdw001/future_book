@@ -34,7 +34,10 @@ class LoginController extends Controller
         }
 
         $this->saveUserAttributeToSession($request, $user);
-        return CommonFunc::_success($data = [], '登录成功');
+
+        $data = (array)($user);
+
+        return CommonFunc::_success($data, '登录成功');
 
 
     }
