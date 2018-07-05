@@ -51,6 +51,8 @@ Route::group(['middleware' => 'checkuserlogin'], function () {
     Route::post('/deletebook', 'Admin\BookController@deleteBook');
     //添加图书评论  addBookEvaluate
     Route::post('/addbookevaluate', 'Admin\BookController@addBookEvaluate');
+    //查询图书的所有评论  getBookEvaluateByBookId
+    Route::post('/getbookevaluatebybookid', 'Admin\BookController@getBookEvaluateByBookId');
 
 
 
@@ -62,7 +64,7 @@ Route::group(['middleware' => 'checkuserlogin'], function () {
     //更改图书为已借出的状态  updateBookStatus
     Route::post('/updatebookstatus', 'Admin\BookBorrowController@updateBookStatus');
 
-    
+
 
 
 
