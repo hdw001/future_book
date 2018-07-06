@@ -248,4 +248,14 @@ class BookController extends Controller
             return CommonFunc::_fail('添加图书评论失败');
         }
     }
+
+    //查询图书的所有评论  getBookEvaluateByBookId
+    public function getBookEvaluateByBookId(Request $request)
+    {
+        $book_id = $request->get('book_id');
+        $bookEvaluates = DB::table('data_book_evaluate')->where('book_id', $book_id)->get()->toArray();
+
+        return CommonFunc::_success($bookEvaluates);
+
+    }
 }
