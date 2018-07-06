@@ -25,7 +25,7 @@
                         <th>图书名称</th>
                         <th>预定时间</th>
                         <th>状态</th>
-                        <th>操作</th>
+                        <th id="setbook">操作</th>
                    </thead>
                     <tbody>
 

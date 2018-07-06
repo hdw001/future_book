@@ -14,7 +14,6 @@ class LoginController extends Controller
     {
         $work_number = $request->get('work_number', '');
         $password = $request->get('password', '');
-
         if (empty($work_number)) {
             return CommonFunc::_fail('请填写您的用户ID');
         }
@@ -22,7 +21,6 @@ class LoginController extends Controller
         if (empty($password)) {
             return CommonFunc::_fail('请填写您的登录密码');
         }
-
         $user = DB::table('users')->where('work_number', $work_number)->first();
 
         if (is_null($user)) {
@@ -36,8 +34,10 @@ class LoginController extends Controller
         $this->saveUserAttributeToSession($request, $user);
 
         $data = (array)($user);
-
-        return CommonFunc::_success($data, '登录成功');
+        $msg='登录成功';
+        return response()->json(
+            ['code' => 2000, 'msg' => $msg, 'data' => $data]
+        );
 
 
     }

@@ -44,6 +44,15 @@ function list(a){
     var _limit=$('#page_limit').val();
     var names=$('#bookname').val()
     var bookclass=$('#bookclass').val()
+    var roleid=getCookie('role')
+    var showrole='';
+    if(roleid==1||roleid==2){
+        showrole='display:inline-block'
+        $("#setbook").show()
+    }else{
+        showrole='display:none'
+        $("#setbook").hide()
+    }
     $.post("/getbookborrowlist",{
         page:_page,
         pageSize:_limit,
@@ -70,7 +79,7 @@ function list(a){
                         '<td>'+data[index].name+'</td>' +
                         '<td>'+data[index].book_name+'</td>' +
                         '<td>'+reservestatus+'</td>' +
-                         '<td>' +
+                         '<td style="'+showrole+'">' +
                              '<button class="borrowbook btn btn-info" style="cursor: pointer" data-reserve="'+data[index].id+'">借阅</button>' +
                     '<button class="stillbook btn btn-success" style="margin-left:20px;cursor: pointer" data-reserve="'+data[index].id+'">归还</button>' +
                          '</td>' +

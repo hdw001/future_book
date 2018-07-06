@@ -35,6 +35,13 @@ $(function(){
 })
 
 function list(a){
+    var roleid=getCookie('role')
+    var showrole='';
+    if(roleid==1||roleid==2){
+        showrole='display:inline-block'
+    }else{
+        showrole='display:none'
+    }
     var _page=a || 1;
     var _limit=$('#page_limit').val();
     var names=$('#bookname').val()
@@ -48,6 +55,7 @@ function list(a){
         if(d.code==2000){
             var data=d.data.data;
             var str='';
+
             $.each(data,function (index,val) {
                 str+='<tr>' +
                         '<td>'+data[index].id+'</td>' +
@@ -58,7 +66,7 @@ function list(a){
                         '<td>'+data[index].book_number+'</td>' +
                          '<td>' +
                              '<button type="button" class="reservebook btn btn-info"  style="cursor: pointer;" data-reserve="'+data[index].id+'">预定</button>' +
-                             '<a style="margin-left:20px;" href="/bookedit?id='+data[index].id+'"> '+
+                             '<a style="margin-left:20px;'+showrole+'"  href="/bookedit?id='+data[index].id+'"> '+
                     '<button type="button" class="btn btn-primary m-b-5">编辑</button></a>' +
                              '<a style="margin-left:20px;" href="/bookinfo?id='+data[index].id+'">' +
                     '<button type="button" class="btn btn-success m-b-5">详情</button>' +

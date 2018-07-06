@@ -101,6 +101,9 @@
                     var data=data.data;
                     $("#error_mag").hide();
                     $("#error_mag").find('.error_mag').html('');
+                    console.log(data)
+                    setCookie('name',data.name)
+                    setCookie('role',data.role_id)
                     window.location.href='/home';
                 }else{
                     $("#error_mag").show();

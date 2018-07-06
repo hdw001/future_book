@@ -56,7 +56,7 @@
     <!-- Navbar Start -->
     <nav class="navigation">
         <ul class="list-unstyled">
-            <li class="has-submenu active"><a href="#"><i class="ion-home"></i> <span class="nav-label">用户管理</span></a>
+            <li class="has-submenu active" id="roleselect"><a href="#"><i class="ion-home"></i> <span class="nav-label">用户管理</span></a>
                 <ul class="list-unstyled">
                     <li class="active"><a href="/userlist">用户列表</a></li>
                 </ul>
@@ -64,7 +64,7 @@
             <li class="has-submenu"><a href="#"><i class="ion-settings"></i> <span class="nav-label">图书管理</span></a>
                 <ul class="list-unstyled">
                     <li><a href="/booklist">图书列表</a></li>
-                    <li><a href="/bookclasslist">图书分类</a></li>
+                    <li id="bookclass"><a href="/bookclasslist">图书分类</a></li>
                     <li><a href="/bookreservelist">图书预定</a></li>
                 </ul>
             </li>
@@ -103,7 +103,7 @@
             <li class="dropdown text-center">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                     <img alt="" src="Picture/avatar-2.jpg" class="img-circle profile-img thumb-sm">
-                    <span class="username">wolf</span> <span class="caret"></span>
+                    <span class="username" id="username"></span> <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu extended pro-menu fadeInUp animated" tabindex="5003" style="overflow: hidden; outline: none;">
                     <li><a href="#"><i class="fa fa-sign-out"></i> 退出</a></li>
@@ -128,7 +128,7 @@
 
     <!-- Footer Start -->
     <footer class="footer">
-        2015 © Velonic.
+        2015 © 图书.
     </footer>
     <!-- Footer Ends -->
 
@@ -207,6 +207,28 @@
             time: 1200
         });
     });
+    var url=window.location.pathname;
+    $(".list-unstyled li").removeClass('active');
+    $(".list-unstyled li").parents('.has-submenu').removeClass('active');
+    $(".list-unstyled li a").each(function () {
+        if($(this).attr('href')==url){
+            $(this).parents('li').addClass('active');
+            $(this).parents('.has-submenu').addClass('active')
+        }
+    })
+    $('#username').html(getCookie('name'))
+    if(getCookie('role')==1){
+        $('#roleselect').show()
+        $("#bookclass").show()
+    }else{
+        $('#roleselect').hide()
+        $("#bookclass").hide()
+    }
+    if(getCookie('role')==2){
+        $("#bookclass").show()
+    }else{
+        $("#bookclass").hide()
+    }
     function setCookie(name,value)
     {
         var Days = 30;
