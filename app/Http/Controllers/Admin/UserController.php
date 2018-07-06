@@ -23,12 +23,12 @@ class UserController extends Controller
         $work_number = $request->get('work_number', '');
         $userLists = DB::table('users')
             ->when($name, function ($query) use ($name) {
-            return $query->where('name', 'like', "%".$name."%");
+                return $query->where('name', 'like', "%" . $name . "%");
             })
             ->when($work_number, function ($query) use ($work_number) {
                 return $query->where('work_number', $work_number);
             });
-        $userLists=$userLists ->orderBy('updated_at', 'desc')->paginate($pageSize);
+        $userLists = $userLists->orderBy('updated_at', 'desc')->paginate($pageSize);
 
         return CommonFunc::_success($userLists);
     }
@@ -274,5 +274,13 @@ class UserController extends Controller
             return CommonFunc::_fail('删除用户失败');
         }
 
+    }
+
+
+    //用户退出方法
+    public function logout(Request $request)
+    {
+        $request->session()->forget('work_number');
+        return CommonFunc::_success([], '退出成功');
     }
 }
