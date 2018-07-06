@@ -45,7 +45,9 @@ function list(a){
                         '<td>'+data[index].phone+'</td>' +
                         '<td>'+data[index].work_number+'</td>' +
                         '<td>'+rolename+'</td>' +
-                         '<td><a href="/useredit?id='+data[index].id+'">编辑</a></td>' +
+                         '<td><a href="/useredit?id='+data[index].id+'">' +
+                    '<button type="button" class="btn btn-success m-b-5">编辑</button>' +
+                    '</a></td>' +
                     '</tr>'
             });
             $("#tabledata").find('tbody').html(str);

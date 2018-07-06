@@ -16,18 +16,15 @@
                         <option value="">请选择</option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-success m-l-10" id="seachbtn">搜索</button>
-                <a href="/bookadd" style="float:right;"><button type="submit" class="btn btn-success m-l-10">新增图书</button></a>
             </div>
             <div class="tablebox">
                 <table class="table table-striped" id="tabledata">
                    <thead>
                         <th>ID</th>
-                        <th>书名</th>
-                        <th>作者</th>
-                        <th>出版社</th>
-                        <th>简介</th>
-                        <th>数量</th>
+                        <th>借阅者</th>
+                        <th>图书名称</th>
+                        <th>预定时间</th>
+                        <th>状态</th>
                         <th>操作</th>
                    </thead>
                     <tbody>
@@ -52,5 +49,5 @@
 @endsection
 @section('jsfile')
     <script type="text/javascript" src="{{asset('js/page/page.js')}}"></script>
-    <script type="text/javascript" src="{{asset('js/booklist/booklist.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/bookreserve/bookreservelist.js')}}"></script>
 @endsection

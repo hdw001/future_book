@@ -63,9 +63,9 @@
             </li>
             <li class="has-submenu"><a href="#"><i class="ion-settings"></i> <span class="nav-label">图书管理</span></a>
                 <ul class="list-unstyled">
-                    <li><a href="grid.html">图书列表</a></li>
-                    <li><a href="portlets.html">图书分类</a></li>
-                    <li><a href="portlets.html">图书预定</a></li>
+                    <li><a href="/booklist">图书列表</a></li>
+                    <li><a href="/bookclasslist">图书分类</a></li>
+                    <li><a href="/bookreservelist">图书预定</a></li>
                 </ul>
             </li>
 
@@ -207,6 +207,28 @@
             time: 1200
         });
     });
-
+    function setCookie(name,value)
+    {
+        var Days = 30;
+        var exp = new Date();
+        exp.setTime(exp.getTime() + Days*24*60*60*1000);
+        document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+    }
+    function getCookie(name)
+    {
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+        if(arr=document.cookie.match(reg))
+            return unescape(arr[2]);
+        else
+            return null;
+    }
+    function delCookie(name)
+    {
+        var exp = new Date();
+        exp.setTime(exp.getTime() - 1);
+        var cval=getCookie(name);
+        if(cval!=null)
+            document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+    }
 </script>
 @yield('jsfile')

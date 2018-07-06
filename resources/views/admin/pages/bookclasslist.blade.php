@@ -6,28 +6,24 @@
 @section('content')
     <div class="userlist">
             <div class="form-inline">
-                <div class="form-group">
-                    <label class="sr-only" for="bookname">书名</label>
-                    <input type="email" class="form-control" id="bookname" placeholder="书名">
-                </div>
-                <div class="form-group m-l-10">
-                    <label class="sr-only" for="bookclass">分类</label>
-                    <select name="" id="bookclass" class="form-control" style="width:160px;">
-                        <option value="">请选择</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-success m-l-10" id="seachbtn">搜索</button>
-                <a href="/bookadd" style="float:right;"><button type="submit" class="btn btn-success m-l-10">新增图书</button></a>
+                {{--<div class="form-group">--}}
+                    {{--<label class="sr-only" for="bookname">书名</label>--}}
+                    {{--<input type="email" class="form-control" id="bookname" placeholder="书名">--}}
+                {{--</div>--}}
+                {{--<div class="form-group m-l-10">--}}
+                    {{--<label class="sr-only" for="bookclass">分类</label>--}}
+                    {{--<select name="" id="bookclass" class="form-control" style="width:160px;">--}}
+                        {{--<option value="">请选择</option>--}}
+                    {{--</select>--}}
+                {{--</div>--}}
+                {{--<button type="submit" class="btn btn-success m-l-10" id="seachbtn">搜索</button>--}}
+                <a href="/bookclassadd" ><button type="submit" class="btn btn-success m-l-10">新增分类</button></a>
             </div>
             <div class="tablebox">
                 <table class="table table-striped" id="tabledata">
                    <thead>
                         <th>ID</th>
-                        <th>书名</th>
-                        <th>作者</th>
-                        <th>出版社</th>
-                        <th>简介</th>
-                        <th>数量</th>
+                        <th>图书分类</th>
                         <th>操作</th>
                    </thead>
                     <tbody>
@@ -52,5 +48,5 @@
 @endsection
 @section('jsfile')
     <script type="text/javascript" src="{{asset('js/page/page.js')}}"></script>
-    <script type="text/javascript" src="{{asset('js/booklist/booklist.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/bookclass/bookclasslist.js')}}"></script>
 @endsection

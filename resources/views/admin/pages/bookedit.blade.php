@@ -81,5 +81,5 @@
     </div>
 @endsection
 @section('jsfile')
-    <script src="{{asset('js/booklist/bookadd.js')}}"></script>
+    <script src="{{asset('js/booklist/bookedit.js')}}"></script>
 @endsection

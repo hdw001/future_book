@@ -11,31 +11,31 @@
                 <div class="form-group">
                     <label class="col-md-2 control-label">书名</label>
                     <div class="col-md-10">
-                        <input type="text" class="form-control" id="book_name" placeholder="请输入书名" value="">
+                        <input type="text" class="form-control" disabled id="book_name" placeholder="请输入书名" value="">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-2 control-label">作者</label>
                     <div class="col-md-10">
-                        <input type="text" id="book_auth"  class="form-control" placeholder="作者">
+                        <input type="text" id="book_auth" disabled  class="form-control" placeholder="作者">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-2 control-label">出版社</label>
                     <div class="col-md-10">
-                        <input type="text" class="form-control" id="book_press" placeholder="请输入出版社名称" value="">
+                        <input type="text" disabled class="form-control" id="book_press" placeholder="请输入出版社名称" value="">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-2 control-label">图书数量</label>
                     <div class="col-md-10">
-                        <input type="number" class="form-control" id="book_number" placeholder="请输入数量" value="">
+                        <input type="number" disabled class="form-control" id="book_number" placeholder="请输入数量" value="">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">图书分类</label>
                     <div class="col-sm-10">
-                        <select class="form-control" id="bookclass">
+                        <select class="form-control" disabled id="bookclass">
                             <option value="">请选择分类</option>
                         </select>
                     </div>
@@ -43,7 +43,7 @@
                 <div class="form-group">
                     <label class="col-md-2 control-label">图书简介</label>
                     <div class="col-md-10">
-                        <textarea name="" id="book_introduction"  class="form-control">
+                        <textarea name="" id="book_introduction" disabled class="form-control">
 
                         </textarea>
                     </div>
@@ -51,7 +51,7 @@
                 <div class="form-group">
                     <label class="col-md-2 control-label">图书详情</label>
                     <div class="col-md-10">
-                        <textarea name="" id="book_detail" rows="20" class="form-control">
+                        <textarea name="" id="book_detail" disabled="" rows="20" class="form-control">
 
                         </textarea>
                     </div>
@@ -59,20 +59,13 @@
                 <div class="form-group">
                     <label class="col-md-2 control-label">图书封面</label>
                     <div class="col-md-10">
-                        <input type="file" class="form-control" id="book_img">
-                    </div>
-                </div>
-                <div class="form-group" id="error_msg" style="display: none;">
-                    <label class="col-md-2 control-label"></label>
-                    <div class="col-md-10 error_msg"  style="color:red;">
-
+                        <img src="" alt="" id="book_img" style="width:400px;height:auto">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-2 control-label"></label>
                     <div class="col-md-10">
-                        <button  class="btn btn-success m-l-10" id="addyes">确定</button>
-                        <a href="/userlist"><button  class="btn btn-default m-l-10" >取消</button></a>
+                        <a href="/booklist"><button  class="btn btn-default m-l-10" >返回</button></a>
                     </div>
                 </div>
 
@@ -81,5 +74,5 @@
     </div>
 @endsection
 @section('jsfile')
-    <script src="{{asset('js/booklist/bookadd.js')}}"></script>
+    <script src="{{asset('js/booklist/bookinfo.js')}}"></script>
 @endsection
