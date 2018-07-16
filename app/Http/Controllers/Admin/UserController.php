@@ -244,11 +244,12 @@ class UserController extends Controller
 
         try {
 
-            DB::table('users')->where('id', $userId)->insert($userDataToDb);
+            DB::table('users')->where('id', $userId)->update($userDataToDb);
             return CommonFunc::_success([], '更新用户成功');
 
         } catch (\Exception $e) {
-            return CommonFunc::_fail('更新用户失败');
+            return CommonFunc::_fail($e->getmessage());
+//            return CommonFunc::_fail('更新用户失败');
         }
     }
 
