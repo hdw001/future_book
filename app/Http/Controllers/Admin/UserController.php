@@ -283,7 +283,7 @@ class UserController extends Controller
 
 
     //用户退出方法
-    public function logout(Request $request)
+    public function logOut(Request $request)
     {
         $request->session()->forget('work_number');
         return CommonFunc::_success([], '退出成功');

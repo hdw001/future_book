@@ -15,21 +15,26 @@
 Route::get('/login', function () {
     return view('admin.login');
 });
-Route::get('/home', function () { return view('admin.pages.home');});
-Route::get('/userlist', function () { return view('admin.pages.userlist');});
-Route::get('/useradd', function () { return view('admin.pages.useradd');});
-Route::get('/useredit', function () { return view('admin.pages.useredit');});
-Route::get('/booklist', function () { return view('admin.pages.booklist');});
-Route::get('/bookadd', function () { return view('admin.pages.bookadd');});
-Route::get('/bookedit', function () { return view('admin.pages.bookedit');});
-Route::get('/bookinfo', function () { return view('admin.pages.bookinfo');});
-Route::get('/bookclasslist', function () { return view('admin.pages.bookclasslist');});
-Route::get('/bookclassadd', function () { return view('admin.pages.bookclassadd');});
-Route::get('/bookclassedit', function () { return view('admin.pages.bookclassedit');});
-Route::get('/bookreservelist', function () { return view('admin.pages.bookreservelist');});
+Route::group(['middleware' => 'checkuserlogin'], function () {
+    Route::get('/home', function () { return view('admin.pages.home');});
+    Route::get('/userlist', function () { return view('admin.pages.userlist');});
+    Route::get('/useradd', function () { return view('admin.pages.useradd');});
+    Route::get('/useredit', function () { return view('admin.pages.useredit');});
+    Route::get('/booklist', function () { return view('admin.pages.booklist');});
+    Route::get('/bookadd', function () { return view('admin.pages.bookadd');});
+    Route::get('/bookedit', function () { return view('admin.pages.bookedit');});
+    Route::get('/bookinfo', function () { return view('admin.pages.bookinfo');});
+    Route::get('/bookclasslist', function () { return view('admin.pages.bookclasslist');});
+    Route::get('/bookclassadd', function () { return view('admin.pages.bookclassadd');});
+    Route::get('/bookclassedit', function () { return view('admin.pages.bookclassedit');});
+    Route::get('/bookreservelist', function () { return view('admin.pages.bookreservelist');});
+});
+
 //==================================================================
 //Route::group(['middleware' => 'checkuserlogin' , 'namespace' => 'Admin'], function () {
 Route::group(['middleware' => 'checkuserlogin'], function () {
+
+    Route::post('/logout', 'Admin\UserController@logOut');
 
     Route::post('/userlist', 'Admin\UserController@selectUserList');
     Route::post('/useradd', 'Admin\UserController@saveUserInfo');
