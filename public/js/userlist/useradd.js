@@ -12,7 +12,7 @@ $(function () {
         },function(data){
             if(data.code==2000){
                 $("#error_msg").hide();
-                // window.location.href='/userlist'
+                window.location.href='/userlist'
             }else{
                 $("#error_msg").show();
                 console.log(data.msg)

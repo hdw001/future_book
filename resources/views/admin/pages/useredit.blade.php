@@ -31,7 +31,7 @@
                         </div>
                         <div class="radio-inline">
                             <label class="cr-styled" for="user_sex_w">
-                                <input type="radio" id="user_sex_w" name="user_sex" value="0">
+                                <input type="radio" id="user_sex_w" name="user_sex" value="2">
                                 <i class="fa"></i>
                                 女
                             </label>

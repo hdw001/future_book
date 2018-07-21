@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="img/favicon_1.ico">
 
-    <title>Velonic - Responsive Admin Dashboard Template</title>
+    <title>未来教育图书管理系统</title>
 
     <!-- Google-Fonts -->
     <link href='{{asset(url('css/03a7988f4261455a8379efb98c6852cb.css'))}}' rel='stylesheet'>

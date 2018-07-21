@@ -61,6 +61,11 @@ class UserController extends Controller
             return CommonFunc::_fail('请填写正确的用户邮箱');
         }
 
+        $userEmail=DB::table('users')->where('email',$email)->first();
+        if(!is_null($userEmail)){
+            return CommonFunc::_fail('邮箱已经存在,请重新填写！');
+        }
+
         if (empty($password)) {
             return CommonFunc::_fail('请填写用户密码');
         }
@@ -123,6 +128,7 @@ class UserController extends Controller
             return CommonFunc::_success([], '添加用户成功');
 
         } catch (\Exception $e) {
+//            return CommonFunc::_fail($e->getMessage().$e->getTraceAsString());
             return CommonFunc::_fail('添加用户失败');
         }
     }
