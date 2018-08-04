@@ -12,14 +12,29 @@ class BookBorrowController extends Controller
     //查询借书的列表
     public function getBookBorrowList(Request $request)
     {
+        $worknumberId = $request->session()->get('work_number');
+        $userAuth = DB::table('users')->where('work_number', $worknumberId)->first();
+        $userId = $userAuth->id;
+        $authBoool = false;
+        if ($userAuth->role_id == 3) {
+            $authBoool = true;
+        }
         $user_name = $request->get('user_name', '');
+        $book_name = $request->get('book_name', '');
         $pageSize = $request->get('pageSize', 10);
+
         $bookBorrowList = DB::table('data_book_borrow as dbb')
             ->leftJoin('data_book as db', 'db.id', '=', 'dbb.book_id')
             ->leftJoin('users as u', 'u.id', '=', 'dbb.user_id')
             ->select('dbb.id', 'db.book_name', 'u.name', 'dbb.book_borrow_date', 'dbb.book_status')
+            ->when($book_name, function ($query) use ($book_name) {
+                return $query->where('db.book_name', 'like', '%' . $book_name . '%');
+            })
             ->when($user_name, function ($query) use ($user_name) {
                 return $query->where('u.name', $user_name);
+            })
+            ->when($authBoool, function ($query) use ($userId) {
+                return $query->where('u.id', $userId);
             });
 
         $bookBorrowList = $bookBorrowList->orderBy('db.updated_at', 'desc')->paginate($pageSize);
@@ -32,9 +47,9 @@ class BookBorrowController extends Controller
     {
         $worknumberId = $request->session()->get('work_number');
         $userAuth = DB::table('users')->where('work_number', $worknumberId)->first();
-        if ($userAuth->role_id == 3) {
-            return CommonFunc::_fail('您没有操作权限');
-        }
+//        if ($userAuth->role_id == 3) {
+//            return CommonFunc::_fail('您没有操作权限');
+//        }
 
         $book_id = $request->get('book_id', '');
         $user_id = $userAuth->id;
@@ -72,8 +87,8 @@ class BookBorrowController extends Controller
             DB::table('data_book_borrow')
                 ->where('id', $book_borrow_id)
                 ->update([
-                'book_status' => $book_status,
-            ]);
+                    'book_status' => $book_status,
+                ]);
             return CommonFunc::_success('更新图书状态成功');
         } catch (\Exception $e) {
             return CommonFunc::_fail('更新图书状态失败');

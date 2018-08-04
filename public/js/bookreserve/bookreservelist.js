@@ -7,6 +7,7 @@ $(function(){
     $("#seachbtn").on('click',function(){
         list();
     })
+
 //4.获取列表数据
     list();
     $('#tabledata').on('click','.borrowbook',function(){
@@ -30,34 +31,37 @@ $(function(){
             book_status:3
         },function(data){
             if(data.code==2000){
-                alert('还书成功！')
+                alert('还书成功！');
                 list();
             }else{
                 alert('还书失败！')
             }
         })
     })
+    $('#seachbook').click(function () {
+        list()
+    })
 })
 
 function list(a){
     var _page=a || 1;
     var _limit=$('#page_limit').val();
-    var names=$('#bookname').val()
-    var bookclass=$('#bookclass').val()
-    var roleid=getCookie('role')
+    var names=$('#bookname').val();
+    var bookclass=$('#user_name').val();
+    var roleid=getCookie('role');
     var showrole='';
     if(roleid==1||roleid==2){
-        showrole='display:inline-block'
+        showrole='display:inline-block';
         $("#setbook").show()
     }else{
-        showrole='display:none'
+        showrole='display:none';
         $("#setbook").hide()
     }
     $.post("/getbookborrowlist",{
         page:_page,
         pageSize:_limit,
         book_name:names,
-        book_cate_id:bookclass
+        user_name:bookclass
     },function(d){
         if(d.code==2000){
             var data=d.data.data;
@@ -75,9 +79,9 @@ function list(a){
                 }
                 str+='<tr>' +
                         '<td>'+data[index].id+'</td>' +
-                        '<td>'+data[index].book_borrow_date+'</td>' +
                         '<td>'+data[index].name+'</td>' +
                         '<td>'+data[index].book_name+'</td>' +
+                    '<td>'+data[index].book_borrow_date+'</td>' +
                         '<td>'+reservestatus+'</td>' +
                          '<td style="'+showrole+'">' +
                              '<button class="borrowbook btn btn-info" style="cursor: pointer" data-reserve="'+data[index].id+'">借阅</button>' +

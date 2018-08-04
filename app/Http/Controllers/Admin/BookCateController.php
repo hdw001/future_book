@@ -123,6 +123,7 @@ class BookCateController extends Controller
 
         try {
             DB::table('data_book_classification')->where('id', $book_cate_id)->delete();
+            return CommonFunc::_success('删除图书分类成功');
         } catch (\Exception $e) {
             return CommonFunc::_fail('删除图书分类失败');
         }

@@ -7,14 +7,15 @@
     <div class="userlist">
             <div class="form-inline">
                 <div class="form-group">
-                    <label class="sr-only" for="bookname">书名</label>
+                    <label  for="bookname">书名：</label>
                     <input type="email" class="form-control" id="bookname" placeholder="书名">
                 </div>
-                <div class="form-group m-l-10">
-                    <label class="sr-only" for="bookclass">分类</label>
-                    <select name="" id="bookclass" class="form-control" style="width:160px;">
-                        <option value="">请选择</option>
-                    </select>
+                <div class="form-group " style="margin:10px;">
+                    <label for="bookclass">用户名：</label>
+                    <input type="email" class="form-control" id="user_name" placeholder="用户名">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" id="seachbook" style="margin-left:2px;">搜索</button>
                 </div>
             </div>
             <div class="tablebox">
@@ -49,5 +50,5 @@
 @endsection
 @section('jsfile')
     <script type="text/javascript" src="{{asset('js/page/page.js')}}"></script>
-    <script type="text/javascript" src="{{asset('js/bookreserve/bookreservelist.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/bookreserve/bookreservelist.js?v=1.1')}}"></script>
 @endsection

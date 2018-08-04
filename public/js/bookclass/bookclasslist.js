@@ -9,6 +9,16 @@ $(function(){
     })
 //4.获取列表数据
     list();
+    $('#tabledata').on('click','.delbookclass',function () {
+        var id =$(this).attr('data-id')
+        $.post('/deletebookcate',{book_cate_id:id},function(data){
+            if(data.code==2000){
+                alert('删除图书分类成功！')
+                list()
+            }
+        })
+
+    })
 })
 
 function list(a){
@@ -29,7 +39,8 @@ function list(a){
                              '<a href="/bookclassedit?id='+data[index].id+'">' +
                     '<button type="button" class="btn btn-primary m-b-5">编辑</button>'+
                     '</a>' +
-                         '</td>' +
+                    '<button type="button"  data-id="'+data[index].id+'" style="margin-left:20px" class="delbookclass btn btn-danger m-b-5">删除</button>'+
+                    '</td>' +
                     '</tr>'
             });
             $("#tabledata").find('tbody').html(str);

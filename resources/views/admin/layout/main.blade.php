@@ -54,7 +54,7 @@
     <!-- / brand -->
 
     <!-- Navbar Start -->
-    <nav class="navigation">
+    <nav class="navigation" style="margin:0;">
         <ul class="list-unstyled">
             <li class="has-submenu active" id="roleselect"><a href="#"><i class="ion-home"></i> <span class="nav-label">用户管理</span></a>
                 <ul class="list-unstyled">
@@ -64,7 +64,7 @@
             <li class="has-submenu"><a href="#"><i class="ion-settings"></i> <span class="nav-label">图书管理</span></a>
                 <ul class="list-unstyled">
                     <li><a href="/booklist">图书列表</a></li>
-                    <li id="bookclass"><a href="/bookclasslist">图书分类</a></li>
+                    <li id="booktype"><a href="/bookclasslist">图书分类</a></li>
                     <li><a href="/bookreservelist">图书预定</a></li>
                 </ul>
             </li>
@@ -106,7 +106,7 @@
                     <span class="username" id="username"></span> <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu extended pro-menu fadeInUp animated" tabindex="5003" style="overflow: hidden; outline: none;">
-                    <li><a href="#"><i class="fa fa-sign-out"></i> 退出</a></li>
+                    <li id="logout"><a href="#"><i class="fa fa-sign-out"></i> 退出</a></li>
                 </ul>
             </li>
             <!-- user login dropdown end -->
@@ -217,17 +217,21 @@
         }
     })
     $('#username').html(getCookie('name'))
-    if(getCookie('role')==1){
-        $('#roleselect').show()
-        $("#bookclass").show()
-    }else{
-        $('#roleselect').hide()
-        $("#bookclass").hide()
-    }
-    if(getCookie('role')==2){
-        $("#bookclass").show()
-    }else{
-        $("#bookclass").hide()
+
+    switch(getCookie('role')){
+        case '1':
+            $('#roleselect').show();
+            $("#booktype").show();
+            break;
+        case '2':
+            $('#roleselect').hide();
+            $("#booktype").show();
+            break;
+        case '3':
+            $('#roleselect').hide();
+            $("#booktype").hide();
+            break;
+
     }
     function setCookie(name,value)
     {
@@ -252,5 +256,14 @@
         if(cval!=null)
             document.cookie= name + "="+cval+";expires="+exp.toGMTString();
     }
+    $('#logout').click(function(){
+        $.post('/logout',{},function(data){
+            if(data.code==2000){
+                delCookie('name');
+                delCookie('role');
+                window.location.href='/login';
+            }
+        })
+    })
 </script>
 @yield('jsfile')
