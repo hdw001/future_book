@@ -16,10 +16,12 @@ Route::get('/login', function () {
     return view('admin.login');
 });
 Route::group(['middleware' => 'checkuserlogin'], function () {
+    Route::get('/', function () { return view('admin.pages.home');});
     Route::get('/home', function () { return view('admin.pages.home');});
     Route::get('/userlist', function () { return view('admin.pages.userlist');});
     Route::get('/useradd', function () { return view('admin.pages.useradd');});
     Route::get('/useredit', function () { return view('admin.pages.useredit');});
+    Route::get('/bookdetail', function () { return view('admin.pages.bookdetail');});
     Route::get('/booklist', function () { return view('admin.pages.booklist');});
     Route::get('/bookadd', function () { return view('admin.pages.bookadd');});
     Route::get('/bookedit', function () { return view('admin.pages.bookedit');});
@@ -40,6 +42,7 @@ Route::group(['middleware' => 'checkuserlogin'], function () {
     Route::post('/useradd', 'Admin\UserController@saveUserInfo');
     Route::get('/userinfo', 'Admin\UserController@editUser');
     Route::post('/userupdate', 'Admin\UserController@updateUser');
+    Route::post('/deleteuser', 'Admin\UserController@deleteUser');
 
 
     //获取所有图书分类的方法  selectBookCateList
@@ -51,7 +54,7 @@ Route::group(['middleware' => 'checkuserlogin'], function () {
     //图书分类更新方法 updateBookCate
     Route::post('/updatebookcate', 'Admin\BookCateController@updateBookCate');
     //删除图书分类 deleteBookCate
-    Route::post('/deletebookcate', 'Admin\BookCateController@deleteBookCate');
+    Route::post('/deletebookcate', 'Admin\BookCateController@deleteUSer');
 
 
 

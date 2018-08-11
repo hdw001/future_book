@@ -52,5 +52,5 @@
 @endsection
 @section('jsfile')
     <script type="text/javascript" src="{{asset('js/page/page.js')}}"></script>
-    <script type="text/javascript" src="{{asset('js/userlist/userlist.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/userlist/userlist.js?v=1.2')}}"></script>
 @endsection

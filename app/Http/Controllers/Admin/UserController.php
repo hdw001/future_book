@@ -275,6 +275,7 @@ class UserController extends Controller
 
         try {
             DB::table('users')->where('id', $userId)->delete();
+            return CommonFunc::_success([],'删除用户成功');
         } catch (\Exception $e) {
             return CommonFunc::_fail('删除用户失败');
         }
