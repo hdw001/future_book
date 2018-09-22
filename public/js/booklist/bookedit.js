@@ -14,7 +14,6 @@ $(function () {
     },function(data){
         if(data.code==2000){
             var data=data.data;
-            alert(data.book_url);
             $('#book_name').val(data.book_name);
             $('#book_auth').val(data.book_author);
             $('#book_press').val(data.book_press);
