@@ -184,9 +184,9 @@ class BookController extends Controller
         ];
         if ($request->hasFile('book_url')) {
             $file = $request->file('book_url');
-            if (count($file) > 1) {
-                return CommonFunc::_fail('一次只能上传一个图片文件');
-            }
+//            if (count($file) > 1) {
+//                return CommonFunc::_fail('一次只能上传一个图片文件');
+//            }
             $fileOriginName = $file->getClientOriginalName();
 
             //save

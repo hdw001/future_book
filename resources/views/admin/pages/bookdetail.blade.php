@@ -59,7 +59,7 @@
                 <div class="form-group">
                     <label class="col-md-2 control-label">图书封面</label>
                     <div class="col-md-10">
-                        <input type="file" class="form-control" id="book_img">
+                        <img src="" alt="" id="book_img" style="width:400px;height:auto">
                     </div>
                 </div>
                 <div class="form-group" id="error_msg" style="display: none;">
@@ -74,5 +74,5 @@
     </div>
 @endsection
 @section('jsfile')
-    <script src="{{asset('js/booklist/bookedit.js')}}"></script>
+    <script src="{{asset('js/booklist/bookinfo.js')}}"></script>
 @endsection

@@ -14,6 +14,7 @@ $(function () {
     },function(data){
         if(data.code==2000){
             var data=data.data;
+            alert(data.book_url);
             $('#book_name').val(data.book_name);
             $('#book_auth').val(data.book_author);
             $('#book_press').val(data.book_press);
@@ -21,6 +22,7 @@ $(function () {
             $('#book_introduction').val(data.book_introduction);
             $("#book_detail").val(data.book_detail);
             $("#book_number").val(data.book_number);
+            $('#book_img').attr('src',data.book_url);
         }
     })
     $('#addyes').on("click",function(){

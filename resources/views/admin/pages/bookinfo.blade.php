@@ -74,5 +74,5 @@
     </div>
 @endsection
 @section('jsfile')
-    <script src="{{asset('js/booklist/bookinfo.js')}}"></script>
+    <script src="{{asset('js/booklist/bookinfo.js?v1=2')}}"></script>
 @endsection

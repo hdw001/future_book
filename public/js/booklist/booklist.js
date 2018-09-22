@@ -83,8 +83,6 @@ function list(a) {
                     '<button type="button" class="btn btn-primary m-b-5">编辑</button></a>' +
                     '<button type="button"  data-id="' + data[index].id + '" style="margin-left:20px;' + showrole + '"  class="delbooklist btn btn-danger m-b-5">删除</button>' +
                     '<a style="margin-left:20px;"  href="/bookdetail?id=' + data[index].id + '"> ' +
-                    // '<button type="button" class="btn btn-danger m-b-5">删除</button></a>' +
-                    //          '<a style="margin-left:20px;" href="/bookinfo?id='+data[index].id+'">' +
                     '<button type="button" class="btn btn-success m-b-5">详情</button>' +
                     '</a>' +
                     '</td>' +
